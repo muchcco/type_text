@@ -1,0 +1,149 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Fondo negro y fuente */
+body {
+  background-color: #000;
+  font-family: Arial, sans-serif;
+  color: #fff;
+  position: relative;
+}
+
+/* Capas para las estrellas de fondo */
+#starsLayer1, #starsLayer2, #starsLayer3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Cada estrella como círculo blanco */
+.star {
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.correct {
+  color: #fff; /* Correcto: se muestra en blanco (o el color original) */
+}
+
+.incorrect {
+  color: red; /* Incorrecto: se muestra en rojo */
+}
+
+.not-typed {
+  color: #ccc; /* Para los caracteres no aún escritos; puedes usar otro color neutro */
+}
+
+
+
+/* Animación para parpadear (twinkle) */
+@keyframes twinkle {
+  0%   { opacity: 0.3; }
+  50%  { opacity: 1; }
+  100% { opacity: 0.3; }
+}
+
+/* Contenedor del juego (sobre las estrellas) */
+.game-container {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  margin-top: 100px;
+}
+
+/* Caja de texto del juego */
+#textContainer {
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #fff;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+}
+
+textarea {
+  width: 80%;
+  height: 100px;
+  margin: 10px 0;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid #fff;
+  background: #222;
+  color: #fff;
+  resize: none;
+}
+
+input[type="text"] {
+  width: 40%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #fff;
+  background: #222;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background: #555;
+  color: #fff;
+  cursor: pointer;
+  margin: 5px;
+}
+button:hover {
+  background: #777;
+}
+
+/* ----- Estilos para el Modal ----- */
+.modal {
+  display: none; /* Se muestra mediante JS */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+  background-color: #222;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%;
+  border-radius: 5px;
+  color: #fff;
+  text-align: center;
+}
+
+.modal-content input[type="text"] {
+  width: 80%;
+  margin: 10px 0;
+}
+.modal-content button {
+  background: #555;
+}
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close:hover, .close:focus {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
