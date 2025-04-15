@@ -61,4 +61,13 @@ class GameController extends Controller
         return response()->json($scores);
     }
 
+    /******** MODAL SECTION  **************************/
+
+    public function modalNextPlayer(Request $request)
+    {
+        $view = view('partials.next-player-modal')->render();
+
+        return response()->json(["html" => $view]);
+    }
+
 }

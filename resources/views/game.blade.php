@@ -135,6 +135,29 @@
     });
   });
 
+  //Para la siguiente ronda
+
+  function nextGame() {
+    $.ajax({
+      type: 'POST',
+      url: '{{ route("next.modal") }}',
+      // data: JSON.stringify({ alias: alias }),
+      contentType: 'application/json',
+      headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+      success: function(data){
+        playerId = data.id;
+        $("#playerModal").load(data.html);
+        // $("#playerModal").fadeOut();  // Oculta el modal de registro
+        loadRandomText();
+        startTime = new Date();
+        $("#submitScoreBtn").prop("disabled", false);
+      },
+      error: function(error){
+        console.error("Error al registrar el jugador:", error);
+      }
+    });
+  }
+
   // Al hacer click en "Enviar Puntaje" se calcula y envía el puntaje
   $("#submitScoreBtn").on("click", function(){
     let endTime = new Date();
@@ -165,8 +188,9 @@
        return response.json();
     })
     .then(data => {
-       alert('¡Puntaje registrado con éxito!\nPuntaje: ' + score);
+      //  alert('¡Puntaje registrado con éxito!\nPuntaje: ' + score);
        $("#userInput").val('');
+       nextGame();
        updateTextDisplay(); // Reinicia el feedback (muestra el texto sin input)
        loadRandomText();
        startTime = new Date();

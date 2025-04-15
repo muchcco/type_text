@@ -11,3 +11,6 @@ Route::post('/api/score', [GameController::class, 'storeScore'])->name('game.sto
 Route::get('/player-modal', function () {
     return view('partials.player-modal');
 })->name('player.modal');
+
+
+Route::post('/next-player-modal',  [GameController::class, 'modalNextPlayer'])->name('next.modal');
