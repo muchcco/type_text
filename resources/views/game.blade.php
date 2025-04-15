@@ -110,7 +110,7 @@
   // Capturamos el envío del formulario del modal para registrar al jugador
   $(document).on('submit', '#playerForm', function(e){
     e.preventDefault();
-    const alias = $("#modalAlias").val().trim();
+    const alias = $("#modalAlias").val().trim();    
     if(alias === ""){
       alert('Ingresa un alias.');
       return;
@@ -141,6 +141,7 @@
     let timeTaken = (endTime - startTime) / 1000; // en segundos
     let typedCount = $("#userInput").val().length;
     let score = Math.round((typedCount / requiredCount) * 100);
+    const time_first = $("#currentTime").val().trim();
 
     fetch('{{ route("game.storeScore") }}', {
       method: 'POST',
@@ -153,7 +154,8 @@
           text_id: textId, 
           score: score, 
           time_taken: timeTaken,
-          character_count: typedCount 
+          character_count: typedCount,
+          time_first: time_first
       })
     })
     .then(response => {

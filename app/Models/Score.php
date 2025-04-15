@@ -9,7 +9,7 @@ class Score extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['player_id', 'text_id', 'score', 'time_taken', 'character_count'];
+    protected $fillable = ['player_id', 'text_id', 'score', 'time_taken', 'character_count', 'time_first', 'time_end'];
 
 
     // Cada puntaje pertenece a un jugador

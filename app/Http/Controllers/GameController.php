@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Text;
 use App\Models\Player;
 use App\Models\Score;
+use Carbon\Carbon;
 
 class GameController extends Controller
 {
@@ -46,8 +47,18 @@ class GameController extends Controller
             'character_count' => 'required|integer'
         ]);
 
-        $score = Score::create($request->all());
-        return response()->json($score);
+        // $score = Score::create($request->all());
+        $scores = new Score;
+        $scores->player_id = $request->player_id;
+        $scores->text_id = $request->text_id;
+        $scores->character_count = $request->character_count;
+        $scores->score = $request->score;
+        $scores->time_taken = $request->time_taken;
+        $scores->time_first = $request->time_first;
+        $scores->time_end = Carbon::now()->format('h:m:s');
+        $scores->save();
+
+        return response()->json($scores);
     }
 
 }
