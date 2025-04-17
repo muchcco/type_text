@@ -61,6 +61,14 @@ class GameController extends Controller
         return response()->json($scores);
     }
 
+    public function report($playerId)
+    {
+        // Carga el jugador junto con sus puntajes y el texto relacionado
+        $player = Player::with(['scores.text'])->findOrFail($playerId);
+
+        return view('report', compact('player'));
+    }
+
     /******** MODAL SECTION  **************************/
 
     public function modalNextPlayer(Request $request)

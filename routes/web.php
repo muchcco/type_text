@@ -14,3 +14,5 @@ Route::get('/player-modal', function () {
 
 
 Route::post('/next-player-modal',  [GameController::class, 'modalNextPlayer'])->name('next.modal');
+Route::get('/report/{player}', [GameController::class, 'report'])
+     ->name('game.report');
